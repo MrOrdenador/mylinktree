@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Linktree</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #ddd;
+            font-family: Consolas, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        body.light-mode {
+            background-color: #fff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #4a90e2;
+            background-color: #191922;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #4a90e2;
+            margin: 2px;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+
+        .light-mode a {
+            color: #4a90e2;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+
+        .light-mode a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .iframe-container {
+            position: relative;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .openButton {
+            position: absolute;
+            right: 0;
+        }
+
+        .bioText {
+            background-color: #191922;
+            color: #ddd;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 300px;
+            height: 320px;
+            resize: none;
+            text-align: center;
+            transition: background-color 0.5s, color 0.5s;
+            transform-origin: center;
+        }
+
+        .light-mode .bioText {
+            background-color: #f0f0f0;
+            color: #4a90e2;
+            border: 1px solid #ccc;
+        }
+
+        .light-mode .bioText:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #4a90e2;
+            cursor: pointer;
+            font-size: 18px;
+            outline: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .mode-toggle input {
+            display: none;
+        }
+
+        .slider {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #ccc;
+            margin-left: 10px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #fff;
+            top: 2px;
+            left: 2px;
+            transition: 0.4s;
+        }
+
+        .light-mode .slider {
+            background-color: #f0f0f0;
+        }
+
+        .light-mode .slider:before {
+            background-color: #fff; 
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .iframe-container iframe {
+            transform-origin: center;
+        }
+
+        .bioText:hover {
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <label class="mode-toggle">
+        <input type="checkbox" onclick="toggleMode()">
+        <div class="slider"></div>
+    </label>
+    <div>
+        <h1>Find me here:</h1>
+        <a href="https://www.youtube.com/channel/UC9_P9Mo77AK10SnTdMNnvAg?sub_confirmation=1" target="_blank">Youtube</a>
+        <a href="https://discord.gg/qG7WZgqVbz" target="_blank">Discord Server!</a>
+    </div>
+    <div class="iframe-container">
+        <div class="openButton"><a href="https://discord.com/users/1102632671655493733" target="_blank">Open!</a></div>
+        <iframe id="discord-iframe" title="Discord user embed" width="340" height="72" frameborder="0" sandbox="allow-scripts" src="https://widgets.vendicated.dev/user?id=1102632671655493733&theme=dark&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23111&foreground-color=%23AAA"></iframe>
+    </div>
+    <div class="bio">
+        <textarea class="bioText" readonly>
+Hey! I'm MrOrdenador, a young Spanish guy who loves programming stuff. :)
+I know about 8 programming languages, and I like playing games such as 
+Minecraft, Fortnite, or Valorant.
+
+I'm the Owner of:
+- MrOrdenador Tweaks
+- M.A.C (Minecraft Archive Community)
+
+If you read this, please sub to my YouTube channel and join my Discord!
+        </textarea>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.querySelector('body');
+            const modeToggle = document.querySelector('.mode-toggle');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                document.getElementById('discord-iframe').src = "https://widgets.vendicated.dev/user?id=1102632671655493733&theme=light&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23FFF&foreground-color=%23000";
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                document.getElementById('discord-iframe').src = "https://widgets.vendicated.dev/user?id=1102632671655493733&theme=dark&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23111&foreground-color=%23AAA";
+            }
+        }
+    </script>
+</body>
+
+</html>
