@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta content="MrOrdenador's Linktree" property="og:title" />
+    <meta content="The linktree of a young guy who loves programming stuff" property="og:description" />
+    <meta content="https://mrordenador.github.io/mylinktree/" property="og:url" />
+    <meta content="https://i.imgur.com/6VcpJOL.png" property="og:image" />
+    <meta content="#000" data-react-helmet="true" name="theme-color" />
+
+    <title>My Linktree</title>
+    <link rel="icon" href="https://i.imgur.com/6VcpJOL.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+    <label class="mode-toggle">
+        <input type="checkbox" onclick="toggleMode()">
+        <div class="slider"></div>
+    </label>
+    <div>
+        <h1>Find me here:</h1>
+        <a href="https://www.youtube.com/channel/UC9_P9Mo77AK10SnTdMNnvAg?sub_confirmation=1" target="_blank">Youtube</a>
+        <a href="https://discord.gg/qG7WZgqVbz" target="_blank">Discord Server!</a>
+    </div>
+    <div class="iframe-container">
+        <div class="openButton"><a href="https://discord.com/users/1244715425137295451" target="_blank">Open!</a></div>
+        <iframe id="discord-iframe" title="Discord user embed" width="340" height="72" frameborder="0" sandbox="allow-scripts" src="https://widgets.vendicated.dev/user?id=1244715425137295451&theme=dark&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23111&foreground-color=%23AAA"></iframe>
+    </div>
+    <div class="bio">
+        <div class="bioText" id="bioContent">
+            Hey! I'm MrOrdenador, a young Spanish guy who loves programming stuff. :)<br>
+            I know about 8 programming languages.
+            <img src="https://cdn-icons-png.flaticon.com/512/6460/6460409.png" alt="Programming" class="emoji"><br><br>
+            <button type="button" class="collapsible">I like playing games such as:</button>
+            <div class="collapsible-content">
+                - <img src="https://i.imgur.com/Dm2hwzF.png" alt="Minecraft" class="emoji"> Minecraft<br>
+                - <img src="https://th.bing.com/th/id/OIP.QOFo-vYrr5zIZwhISoBqtgAAAA?rs=1&pid=ImgDetMain" alt="Fortnite" class="emoji"> Fortnite<br>
+                - <img src="https://cdn2.steamgriddb.com/thumb/ae1b7b5f59d06769c8445ee3e4389b73.png" alt="Valorant" class="emoji"> Valorant<br>
+            </div>
+            <br>
+            <button type="button" class="collapsible">I'm the Owner of:</button>
+            <div class="collapsible-content">
+                - CodeCafé
+                <img src="https://images-ext-1.discordapp.net/external/BXh7m6irMlNwnei2gbDcl0ges9npcmIdqIybDOD_nBE/https/cdn.discordapp.com/icons/1248668375647785115/5ab1b5fce569574c5a5e258ee6344331.png?format=webp&quality=lossless" alt="Codecafe" class="emoji"><br>
+                - M.A.C (Minecraft Archive Community)
+                <img src="https://cdn.discordapp.com/icons/1122877652836024452/dff9f50b360cde371b5367ff1417071c.png?size=1024" alt="M.A.C" class="emoji">
+            </div>
+            <br>
+            If you read this, please sub to my YouTube channel and join my Discord!
+        </div>
+    </div>
+    <div id="visit-counter">Visits: 0</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<script>
+// script.js
+function toggleMode() {
+    const body = document.querySelector('body');
+    const iframe = document.getElementById('discord-iframe');
+    if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        iframe.src = "https://widgets.vendicated.dev/user?id=1244715425137295451&theme=light&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23FFF&foreground-color=%23000";
+    } else {
+        body.classList.remove('light-mode');
+        body.classList.add('dark-mode');
+        iframe.src = "https://widgets.vendicated.dev/user?id=1244715425137295451&theme=dark&banner=false&full-banner=true&rounded-corners=true&discord-icon=true&badges=true&guess-nitro=true&background-color=%23111&foreground-color=%23AAA";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(item => {
+        item.addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    });
+
+    let visitCount = localStorage.getItem('visitCount');
+    if (!visitCount) {
+        visitCount = 0;
+    }
+    visitCount++;
+    localStorage.setItem('visitCount', visitCount);
+    document.getElementById('visit-counter').textContent = `Visits: ${visitCount}`;
+});
+</script>
